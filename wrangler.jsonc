@@ -1,0 +1,25 @@
+// Mise en ligne de l'application (version web) sur Cloudflare Workers.
+// Réglages du Worker dans le tableau de bord Cloudflare :
+//   dépôt GitHub : Mael-AAA/dobby-app (branche main) ; Root directory : vide (/) ;
+//   Build command : vide ; Deploy command : npx wrangler deploy (valeur par défaut).
+// Secret à ajouter ensuite (Settings > Variables and Secrets, type Secret) : OPENROUTER_API_KEY.
+// Adresse obtenue : https://dobby-app.<sous-domaine>.workers.dev
+{
+  // doit être identique au nom du Worker dans le tableau de bord Cloudflare
+  "name": "dobby-app",
+  // le relais vers OpenRouter (la clé reste sur Cloudflare)
+  "main": "cloudflare/worker.js",
+  "compatibility_date": "2026-11-20",
+  "build": {
+    // produit la version web dans dist, sans aucune clé (voir scripts/construire-web.mjs)
+    "command": "npm run build:web"
+  },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // appli à une seule page : /messages, /plan… renvoient index.html, le routeur d'Expo fait le reste
+    "not_found_handling": "single-page-application",
+    // les messages écrits à Dobby passent par le Worker
+    "run_worker_first": ["/api/*"]
+  }
+}

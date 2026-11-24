@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Dobby",
+    "slug": "dobby",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "dobby",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#F2F7F9",
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#151D20",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "single",
+      "favicon": "./assets/images/favicon.png",
+      "lang": "fr",
+      "description": "Suivre ce que fait Dobby, lui confier une tâche, l’arrêter d’un geste.",
+      "themeColor": "#F2F7F9"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F2F7F9",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 72
+        }
+      ]
+    ]
+  }
+}
